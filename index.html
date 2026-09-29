@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos ご提案 | 記事LP制作パートナーシップのご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0F3D3E;
+    --teal-mid:#1B5A56;
+    --teal-soft:#E4EEEC;
+    --coral:#F2545B;
+    --coral-soft:#FCE4E1;
+    --charcoal:#262624;
+    --paper:#F5F2ED;
+    --gold:#C9A66B;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP',sans-serif;
+    color:var(--charcoal);
+    background:var(--paper);
+    line-height:1.8;
+    font-size:16px;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:900;
+    letter-spacing:0.02em;
+  }
+  .mono{
+    font-family:'JetBrains Mono',monospace;
+  }
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;}
+  section{position:relative;padding:100px 24px;}
+  .wrap{max-width:1080px;margin:0 auto;}
+
+  /* ===== Brand bar ===== */
+  .brandbar{
+    position:fixed;top:0;left:0;width:100%;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 28px;
+    background:rgba(15,61,62,0.92);
+    color:#fff;
+    z-index:100;
+    backdrop-filter:blur(4px);
+  }
+  .brandbar .logo{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:900;
+    font-size:1.1rem;
+    letter-spacing:0.08em;
+  }
+  .brandbar .logo span{color:var(--coral);}
+  .brandbar .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    opacity:0.7;
+    display:none;
+  }
+  @media(min-width:640px){.brandbar .tag{display:inline;}}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(242,84,91,0.25), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(201,166,107,0.2), transparent 40%),
+      linear-gradient(160deg, var(--teal-deep) 0%, #0A2C2D 60%, #081F20 100%);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    padding-top:110px;
+    padding-bottom:60px;
+  }
+  .hero .wrap{
+    display:flex;
+    flex-direction:column;
+    gap:56px;
+  }
+  .hero-eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.15em;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2rem,5vw,3.4rem);
+    line-height:1.4;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--coral);
+    border-bottom:4px solid var(--coral);
+    padding-bottom:2px;
+  }
+  .hero p.lead{
+    font-size:1.02rem;
+    color:#DCEBE9;
+    max-width:560px;
+  }
+  .hero-badge{
+    display:inline-block;
+    margin-top:26px;
+    padding:9px 18px;
+    border:1px solid rgba(255,255,255,0.35);
+    border-radius:100px;
+    font-size:0.82rem;
+    color:#fff;
+    background:rgba(255,255,255,0.06);
+  }
+
+  /* flow diagram */
+  .flow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    flex-wrap:wrap;
+  }
+  .flow-step{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:14px;
+    padding:22px 20px;
+    text-align:center;
+    min-width:140px;
+    backdrop-filter:blur(2px);
+  }
+  .flow-step .num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    color:var(--gold);
+    display:block;
+    margin-bottom:6px;
+  }
+  .flow-step .label{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    color:#fff;
+  }
+  .flow-step.active{
+    background:linear-gradient(135deg, var(--coral), #d43e46);
+    border-color:transparent;
+  }
+  .flow-arrow{
+    color:var(--gold);
+    font-size:1.6rem;
+    padding:0 14px;
+    font-family:'JetBrains Mono',monospace;
+  }
+  @media(max-width:680px){
+    .flow{flex-direction:column;}
+    .flow-arrow{transform:rotate(90deg);padding:6px 0;}
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .sec-eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.75rem;
+    letter-spacing:0.15em;
+    color:var(--coral);
+    text-transform:uppercase;
+    margin-bottom:14px;
+    display:block;
+  }
+  .sec-title{
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    color:var(--teal-deep);
+    margin-bottom:34px;
+  }
+
+  /* ===== UNDERSTANDING SECTION ===== */
+  .understand{
+    background:var(--teal-soft);
+  }
+  .understand .wrap{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  @media(min-width:860px){
+    .understand .wrap{grid-template-columns:0.9fr 1.1fr;align-items:start;}
+  }
+  .understand-quote{
+    background:var(--teal-deep);
+    color:#fff;
+    border-radius:18px;
+    padding:34px 30px;
+    position:relative;
+    font-size:1.05rem;
+    line-height:1.9;
+  }
+  .understand-quote::before{
+    content:"“";
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    font-size:5rem;
+    color:var(--gold);
+    position:absolute;
+    top:-10px;
+    left:18px;
+    opacity:0.5;
+  }
+  .understand-body p{
+    margin-bottom:18px;
+    color:#1c3d3b;
+  }
+  .understand-body strong{
+    color:var(--coral);
+    border-bottom:2px solid var(--coral-soft);
+  }
+
+  /* ===== VALUE CARDS ===== */
+  .values{background:var(--paper);}
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:24px;
+  }
+  .card{
+    background:#fff;
+    border-radius:16px;
+    padding:30px 26px;
+    box-shadow:0 12px 30px -18px rgba(15,61,62,0.35);
+    border-top:5px solid var(--teal-deep);
+    transition:transform 0.25s ease;
+  }
+  .card:nth-child(2){border-top-color:var(--coral);}
+  .card:nth-child(3){border-top-color:var(--gold);}
+  .card:nth-child(4){border-top-color:var(--teal-mid);}
+  .card:nth-child(5){border-top-color:var(--coral);}
+  .card:hover{transform:translateY(-6px);}
+  .card .idx{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.78rem;
+    color:var(--gold);
+    display:block;
+    margin-bottom:10px;
+  }
+  .card h3{
+    font-size:1.12rem;
+    color:var(--teal-deep);
+    margin-bottom:12px;
+    line-height:1.5;
+  }
+  .card p{
+    font-size:0.92rem;
+    color:#4b4a47;
+  }
+
+  /* ===== PROCESS / TIMELINE ===== */
+  .process{background:#0F3D3E;color:#fff;}
+  .process .sec-title{color:#fff;}
+  .process .sec-eyebrow{color:var(--gold);}
+  .timeline{
+    position:relative;
+    margin-top:20px;
+    padding-left:28px;
+    border-left:2px dashed rgba(255,255,255,0.3);
+  }
+  .t-item{
+    position:relative;
+    padding:0 0 40px 26px;
+  }
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:'';
+    position:absolute;
+    left:-38px;
+    top:2px;
+    width:16px;height:16px;
+    border-radius:50%;
+    background:var(--coral);
+    border:3px solid #0F3D3E;
+  }
+  .t-item .t-day{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.75rem;
+    color:var(--gold);
+    display:block;
+    margin-bottom:6px;
+  }
+  .t-item h3{
+    font-size:1.05rem;
+    margin-bottom:8px;
+    color:#fff;
+  }
+  .t-item p{
+    font-size:0.9rem;
+    color:#CFE6E3;
+    max-width:600px;
+  }
+
+  /* ===== CLOSING ===== */
+  .closing{
+    background:linear-gradient(150deg, var(--paper) 0%, var(--teal-soft) 100%);
+  }
+  .closing-box{
+    background:#fff;
+    border-radius:22px;
+    padding:50px 40px;
+    box-shadow:0 20px 50px -30px rgba(15,61,62,0.4);
+    text-align:center;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .closing-box h2{
+    color:var(--teal-deep);
+    font-size:clamp(1.4rem,3vw,1.9rem);
+    margin-bottom:16px;
+  }
+  .closing-box p{
+    color:#4b4a47;
+    margin-bottom:30px;
+    font-size:0.98rem;
+  }
+  .offer-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:34px;
+    font-size:0.9rem;
+  }
+  .offer-table th,.offer-table td{
+    border:1px solid #e3ddd3;
+    padding:12px 14px;
+    text-align:left;
+  }
+  .offer-table th{
+    background:var(--teal-soft);
+    color:var(--teal-deep);
+    width:38%;
+    font-weight:700;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--coral);
+    color:#fff;
+    padding:16px 42px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:1rem;
+    box-shadow:0 14px 30px -12px rgba(242,84,91,0.6);
+    transition:transform 0.2s ease;
+  }
+  .cta-btn:hover{transform:translateY(-3px);}
+  .closing-note{
+    margin-top:22px;
+    font-size:0.82rem;
+    color:#8a8577;
+  }
+
+  footer{
+    text-align:center;
+    padding:34px 20px;
+    background:#0F3D3E;
+    color:#9FC2BF;
+    font-size:0.78rem;
+    font-family:'JetBrains Mono',monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="brandbar">
+  <div class="logo">KAIRO<span>S</span></div>
+  <div class="tag">WEB制作・システム開発 / 記事LP制作パートナー</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="hero-eyebrow">Proposal for アトリエチーム 様</span>
+      <h1>読み手を迷わせない、<br><em>一本の道</em>をつくります。</h1>
+      <p class="lead">
+        広告から記事LP、そして商品LPへ——。<br>
+        ユーザーの視線と心理が途切れない導線設計を、Kairosがご提案します。
+      </p>
+      <span class="hero-badge">記事LP制作ワーカー募集案件へのご提案 &nbsp;|&nbsp; Kairos</span>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step"><span class="num">STEP 01</span><span class="label">広告クリエイティブ</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step active"><span class="num">STEP 02</span><span class="label">記事LP</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="num">STEP 03</span><span class="label">商品・申込LP</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- UNDERSTANDING -->
+<section class="understand">
+  <div class="wrap">
+    <div class="understand-quote">
+      記事LPは「読ませる記事」ではなく、<br>
+      「行動させる記事」でなければならない。
+    </div>
+    <div class="understand-body">
+      <span class="sec-eyebrow">Our Understanding</span>
+      <h2 class="sec-title">美容・ヘルスケア案件、拝見しました。</h2>
+      <p>
+        アドアフィリエイトにおける記事LPは、単なる読み物ではなく、<strong>広告からの流入熱量を落とさずに商品LPへ橋渡しする「装置」</strong>だと理解しています。特に美容・ヘルスケア領域は、悩みへの共感と根拠提示、そして表現の適正さ（薬機法配慮）が同時に求められる難易度の高い領域です。
+      </p>
+      <p>
+        単純なライティングだけでなく、見出し設計・タイトル訴求・CTA配置・簡単なHTML実装まで一貫して手掛けられる体制が必要という点、そして「継続的に発注できるパートナー」を求められている点を踏まえ、Kairosとして体制ごとご提案いたします。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE -->
+<section class="values">
+  <div class="wrap">
+    <span class="sec-eyebrow">What Kairos Provides</span>
+    <h2 class="sec-title">Kairosが提供できる価値</h2>
+    <div class="card-grid">
+      <div class="card">
+        <span class="idx">VALUE / 01</span>
+        <h3>心理導線を軸にした構成設計</h3>
+        <p>PASONA・AIDA等の型を美容・ヘルスケア特有の悩み訴求に合わせて再構築。読者の離脱ポイントを潰した構成案をご提示します。</p>
+      </div>
+      <div class="card">
+        <span class="idx">VALUE / 02</span>
+        <h3>薬機法を意識したライティング</h3>
+        <p>訴求力と表現の適正さを両立。見出し・導入文・本文まで、成約を意識した文章設計で執筆します。</p>
+      </div>
+      <div class="card">
+        <span class="idx">VALUE / 03</span>
+        <h3>デザイン〜簡易HTML実装まで一貫対応</h3>
+        <p>画像・図解・CTA配置を含むデザインと、簡単なコーディングまで社内体制でワンストップ対応可能です。</p>
+      </div>
+      <div class="card">
+        <span class="idx">VALUE / 04</span>
+        <h3>継続発注に耐える制作体制</h3>
+        <p>複数記事の並走・定期発注にも対応。フォーマット化により毎回のディレクションコストを最小化します。</p>
+      </div>
+      <div class="card">
+        <span class="idx">VALUE / 05</span>
+        <h3>既存記事の改善・リライト</h3>
+        <p>既存記事LPのCTR/CVRを踏まえたリライト、広告クリエイティブとの訴求整合性チェックにも対応します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <span class="sec-eyebrow">How We Work</span>
+    <h2 class="sec-title">進め方・スケジュールイメージ</h2>
+    <div class="timeline">
+      <div class="t-item">
+        <span class="t-day">DAY 0</span>
+        <h3>ヒアリング・素材確認</h3>
+        <p>商品情報、広告クリエイティブ、ターゲット、訴求NGライン（薬機法関連）を共有いただきます。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-day">DAY 1-2</span>
+        <h3>構成案・タイトル案のご提示</h3>
+        <p>見出し構成、訴求フロー、タイトル候補を複数パターンでご提案し、方向性をすり合わせます。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-day">DAY 3-5</span>
+        <h3>ライティング・デザイン制作</h3>
+        <p>本文執筆、図解・画像配置、CTA設計を含めた記事LPを制作。必要に応じ簡易HTML実装まで対応します。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-day">DAY 6</span>
+        <h3>レビュー・修正対応</h3>
+        <p>フィードバックを受け、訴求のブラッシュアップ・微調整を行います。</p>
+      </div>
+      <div class="t-item">
+        <span class="t-day">DAY 7〜</span>
+        <h3>納品・継続体制へ</h3>
+        <p>納品後、次回以降の継続発注に向けたフォーマット共有・進行効率化のご提案もいたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <div class="closing-box">
+      <h2>まずは1本、お任せください。</h2>
+      <p>
+        美容・ヘルスケア領域の記事LP制作について、体制・実績・単価感を下記の通りご提案いたします。
+      </p>
+      <table class="offer-table">
+        <tr>
+          <th>対応範囲</th>
+          <td>構成・ライティング・デザイン・簡易HTML実装／リライト対応可</td>
+        </tr>
+        <tr>
+          <th>1記事あたり単価</th>
+          <td>50,000円 〜 100,000円（内容・文量・修正回数によりご相談）</td>
+        </tr>
+        <tr>
+          <th>対応体制</th>
+          <td>ディレクター1名＋ライター／デザイナーによる複数名体制</td>
+        </tr>
+        <tr>
+          <th>継続対応</th>
+          <td>複数記事の並走・定期発注に対応可能</td>
+        </tr>
+      </table>
+      <a href="#" class="cta-btn">Kairosに相談・見積を依頼する</a>
+      <p class="closing-note">自己紹介・実績・ご提案詳細は、ご連絡後に別途資料にてご共有いたします。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  KAIROS — Web制作 / システム開発チーム ｜ Proposal for アトリエチーム 記事LP制作案件
+</footer>
+
+</body>
+</html>
